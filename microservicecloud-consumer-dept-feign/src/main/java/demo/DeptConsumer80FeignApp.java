@@ -1,10 +1,9 @@
 package demo;
 
-import demo.myrule.MySelfRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 /**
  * @author luwb
@@ -12,11 +11,11 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@RibbonClient(name = "MICROSERVICECLOUD-DEPT", configuration = MySelfRule.class)
-public class DeptConsumer80App {
+@EnableFeignClients(basePackages = {"demo"})
+public class DeptConsumer80FeignApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(DeptConsumer80App.class, args);
+        SpringApplication.run(DeptConsumer80FeignApp.class, args);
     }
 
 }
